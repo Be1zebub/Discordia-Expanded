@@ -8,13 +8,15 @@ There is no documentation at this moment, read the library code to learn more
 
 ## Installation
 
-1. Open your project `deps` folder
-2. Run `git clone git@github.com:Be1zebub/Discordia-Expanded.git`.
+1. Open your project folder
+2. Run `git clone git@github.com:Be1zebub/Discordia-Expanded.git deps/discordia-expanded`
 
 ## Examples
 
 auto crossposting
 ```lua
+require("discordia-expanded")
+
 client:on("messageCreate", function(msg)
 	if msg.channel.type == 5 then -- is news channel
 		msg:Crosspost()
@@ -24,8 +26,15 @@ end)
 
 auto threads
 ```lua
+require("discordia-expanded")
+
+local forumChannels = {
+	["676069143463723018"] = true,
+	["773170907879178241"] = true
+}
+
 client:on("messageCreate", function(msg)
-	if msg.channel.type == 5 then -- is news channel
+	if forumChannels[msg.channel.id] then
 		msg:CreateThread({name = msg.id})
 	end
 end)

@@ -1,3 +1,5 @@
+-- from incredible-gmod.ru with <3
+
 local pathjoin = require("pathjoin")
 local fs = require("fs")
 
@@ -11,14 +13,14 @@ local GuildTextChannel = classes.GuildTextChannel
 local insert, remove, concat = table.insert, table.remove, table.concat
 local format = string.format
 
-local _istable = {table = true}
-local function istable(var)
-	return _istable[var] or false
+local is_string = getmetatable("")
+local function isstring(var)
+	return getmetatable(var) == is_string
 end
 
-local _isstring = getmetatable("")
-local function isstring(var)
-	return getmetatable(var) == _isstring
+local is_table = {table = true}
+local function istable(var)
+	return is_table[type(var)] or false
 end
 
 Message._OldReply = Message.__OldReply or Message.reply
@@ -31,7 +33,7 @@ function Message:reply(content, noreply)
 		content.message_reference = {
 			guild_id = self._parent.guild and self._parent.guild.id or nil,
 			channel_id = self._parent.id,
-			message_id = self.id
+			message_id = self.id,
 		}
 
 		return self._parent:send(content)
@@ -49,18 +51,18 @@ function Message:__init(data, parent)
 end
 
 local function parseFile(obj, files)
-	if isstring(obj) then
+	if type(obj) == "string" then
 		local data, err = readFileSync(obj)
 		if not data then
 			return nil, err
 		end
 		files = files or {}
 		insert(files, {remove(splitPath(obj)), data})
-	elseif istable(obj) and isstring(obj[1]) and isstring(obj[2]) then
+	elseif type(obj) == "table" and type(obj[1]) == "string" and type(obj[2]) == "string" then
 		files = files or {}
 		insert(files, obj)
 	else
-		return nil, "Invalid file object: ".. tostring(obj)
+		return nil, "Invalid file object: " .. tostring(obj)
 	end
 	return files
 end
@@ -116,14 +118,6 @@ function TextChannel:send(content)
 			end
 		end
 
-		if tbl.message_reference and getmetatable(tbl.message_reference) == Message then
-			tbl.message_reference = {
-				guild_id = tbl.message_reference._parent.guild and tbl.message_reference._parent.guild.id or nil,
-				channel_id = tbl.message_reference._parent.id,
-				message_id = tbl.message_reference.id
-			}
-		end
-
 		data, err = self.client._api:createMessage(self._id, {
 			content = content,
 			tts = tbl.tts,
@@ -146,4 +140,4 @@ function TextChannel:send(content)
 end
 
 GuildTextChannel._OldSend = GuildTextChannel._OldSend or GuildTextChannel.send
-GuildTextChannel.send = TextChannel.send
+GuildTextChannel.send = TextChannel.send -- discordia class lib sucks when base classes come into play
