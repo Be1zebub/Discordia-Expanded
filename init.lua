@@ -1,6 +1,4 @@
-if discordia == nil then
-	_G.discordia = require("discordia")
-end
+local discordia = require("discordia")
 
 require("thread")
 require("crosspost")
