@@ -30,3 +30,11 @@ client:on("messageCreate", function(msg)
 	end
 end)
 ```
+
+## PS
+
+The library is being developed as new things are needed in my projects, so there are many things that have recently been added to the api discord - but ive still doesnt added it into this lib.  
+Here are some other libraries that expand the Discordia features, you can use them together with Discordia Expanded to make your bots better.  
+https://github.com/GitSparTV/discordia-slash  
+https://github.com/Bilal2453/discordia-interactions  
+https://github.com/Bilal2453/discordia-components
