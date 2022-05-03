@@ -26,7 +26,7 @@ auto threads
 ```lua
 client:on("messageCreate", function(msg)
 	if msg.channel.type == 5 then -- is news channel
-		msg:CreateThread(msg.id)
+		msg:CreateThread({name = msg.id})
 	end
 end)
 ```
