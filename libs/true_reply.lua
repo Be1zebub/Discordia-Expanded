@@ -51,14 +51,14 @@ function Message:__init(data, parent)
 end
 
 local function parseFile(obj, files)
-	if type(obj) == "string" then
+	if isstring(obj) then
 		local data, err = readFileSync(obj)
 		if not data then
 			return nil, err
 		end
 		files = files or {}
 		insert(files, {remove(splitPath(obj)), data})
-	elseif type(obj) == "table" and type(obj[1]) == "string" and type(obj[2]) == "string" then
+	elseif istable(obj) and isstring(obj[1]) and isstring(obj[2]) then
 		files = files or {}
 		insert(files, obj)
 	else
