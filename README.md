@@ -44,8 +44,8 @@ client:on("messageCreate", function(msg)
 end)
 ```
 
-![Threads](https://github.com/Be1zebub/Discordia-Expanded/blob/main/demo/create_thread.jpg?raw=true)
 ![True reply](https://github.com/Be1zebub/Discordia-Expanded/blob/main/demo/true_reply.jpg?raw=true)
+![Threads](https://github.com/Be1zebub/Discordia-Expanded/blob/main/demo/create_thread.jpg?raw=true)
 
 ## PS
 
