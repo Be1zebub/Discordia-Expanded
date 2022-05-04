@@ -15,6 +15,8 @@ There is no documentation at this moment, read the library code to learn more
 
 auto crossposting
 ```lua
+local discordia = require("discordia")
+local client = discordia.Client()
 require("discordia-expanded")
 
 client:on("messageCreate", function(msg)
@@ -22,6 +24,8 @@ client:on("messageCreate", function(msg)
 		msg:Crosspost()
 	end
 end)
+
+client:run("Bot XXX")
 ```
 
 auto threads
