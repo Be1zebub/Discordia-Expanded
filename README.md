@@ -40,6 +40,9 @@ client:on("messageCreate", function(msg)
 end)
 ```
 
+![Threads](https://github.com/Be1zebub/Discordia-Expanded/blob/main/demo/create_thread.jpg?raw=true)
+![True reply](https://github.com/Be1zebub/Discordia-Expanded/blob/main/demo/true_reply.jpg?raw=true)
+
 ## PS
 
 The library is being developed as new things are needed in my projects, so there are many things that have recently been added to the api discord - but ive still doesnt added it into this lib.  
