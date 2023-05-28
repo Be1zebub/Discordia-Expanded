@@ -9,7 +9,7 @@ There is no documentation at this moment, read the library code to learn more
 ## Installation
 
 1. Open your project folder
-2. Run `git clone git@github.com:Be1zebub/Discordia-Expanded.git deps/discordia-expanded`
+2. Run `git clone https://github.com/Be1zebub/Discordia-Expanded.git deps/discordia-expanded`
 
 ## Examples
 
